@@ -80,7 +80,7 @@ You can copy the url to clipboard and paste it in Github webhook url (handy for 
 
 #### Updating from branches
 
-You can trigger on different Branches
+You can trigger on different Branches just modify your BuildConfig
 
 ```yaml
 source:
