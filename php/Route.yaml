@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Route
 metadata:
-  name: www
+  name: php
 spec:
   to:
     kind: Service
