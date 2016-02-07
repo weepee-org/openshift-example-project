@@ -85,7 +85,7 @@ You can trigger on different Branches
 ```yaml
 source:
   git:
-    ref: master
+    ref: release
     uri: https://github.com/weepee-org/openshift-example-project.git
   contextDir: php/
   type: Git
