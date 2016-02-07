@@ -5,4 +5,4 @@ metadata:
 spec:
   to:
     kind: Service
-    name: static
+    name: php
