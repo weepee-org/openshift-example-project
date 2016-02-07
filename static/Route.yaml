@@ -5,4 +5,4 @@ metadata:
 spec:
   to:
     kind: Service
-    name: openshift-my-static-site
+    name: static
