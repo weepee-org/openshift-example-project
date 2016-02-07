@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ImageStream
+metadata:
+  labels:
+    app: openshift-my-static-site
+  name: openshift-my-static-site
+spec: {}
