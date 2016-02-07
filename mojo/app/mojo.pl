@@ -17,3 +17,5 @@ get '/' => sub {
     $self->render(text => { 'this is an encrypted example mojo page' });
   }
 };
+
+app->start;
