@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: mojo
+spec:
+  to:
+    kind: Service
+    name: mojo

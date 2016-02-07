@@ -1,4 +1,3 @@
-FROM weepee-registry/apache-php
-
+FROM weepee-registry/php-webserver
 # Your App
 ADD app /app

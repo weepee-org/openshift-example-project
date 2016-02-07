@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: mojo
+  name: mojo
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: mojo:latest
+  resources: {}
+  source:
+    git:
+      ref: master
+      uri: https://github.com/weepee-org/openshift-example-project.git
+    contextDir: mojo/
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: mojo-webserver:latest
+        namespace: weepee-registry
+    type: Docker
