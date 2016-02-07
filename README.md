@@ -39,7 +39,7 @@ build php webserver
 > oc start-build php
 ```
 
-#### Addoption for a private repository
+#### Modifications for integrating in a private repository
 
 create an ssh deploy key without passphrase
 ```sh
@@ -51,28 +51,18 @@ create an ssh deploy key without passphrase
 > oc secrets add serviceaccount/builder secrets/openshift-my-static-site
 ```
 
-Clone the repository
-```sh
-> git clone git@github.com:ure/openshift-my-static-site.git
-> cd openshift-my-static-site
-```
-
-Create the BuildConfig
+Update the BuildConfig
+(Modify and Append BuildConfig-Secrets.yaml.template to your Buildconfig)
+(Remove old BuildConfig first !)
 
 ```sh
-> ./genwebhooksecret.sh
+> oc delete -f Buildconfig.yaml
 > oc create -f BuildConfig.yaml
 ```
 Add your key to the deploy keys of you repository on GitHub
 
 ```sh
 > cat ~/.ssh/openshift-my-static-site.pub
-```
-
-Deploy from private git repository
-
-```sh
-> oc new-app .
 ```
 
 #### Route-production.yml
@@ -87,3 +77,16 @@ Routes to a production hostname
 
 You can find the (github and generic) webhook in the openshift control pannel ! (Browse - Builds)
 You can copy the url to clipboard and paste it in Github webhook url (handy for rolling updates)
+
+#### Updating from branches
+
+You can trigger on different Branches
+
+```yaml
+source:
+  git:
+    ref: master
+    uri: https://github.com/weepee-org/openshift-example-project.git
+  contextDir: php/
+  type: Git
+```
