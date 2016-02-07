@@ -16,3 +16,10 @@ oc create -f php/Route.yaml
 oc create -f php/Services.yaml
 oc start-build php
 
+echo "mojo"
+oc create -f mojo/BuildConfig.yaml
+oc create -f mojo/ImageStream.yaml
+oc create -f mojo/DeploymentConfig.yaml
+oc create -f mojo/Route.yaml
+oc create -f mojo/Services.yaml
+oc start-build mojo

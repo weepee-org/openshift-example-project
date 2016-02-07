@@ -39,6 +39,17 @@ build php webserver
 > oc start-build php
 ```
 
+build mojo webserver
+
+```sh
+> oc create -f mojo/BuildConfig.yaml
+> oc create -f mojo/ImageStream.yaml
+> oc create -f mojo/DeploymentConfig.yaml
+> oc create -f mojo/Route.yaml
+> oc create -f mojo/Services.yaml
+> oc start-build mojo
+```
+
 #### Modifications for integrating in a private repository
 
 create an ssh deploy key without passphrase
