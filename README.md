@@ -28,6 +28,17 @@ build static webserver
 > oc start-build static
 ```
 
+build php webserver
+
+```sh
+> oc create -f php/BuildConfig.yaml
+> oc create -f php/ImageStream.yaml
+> oc create -f php/DeploymentConfig.yaml
+> oc create -f php/Route.yaml
+> oc create -f php/Services.yaml
+> oc start-build php
+```
+
 #### Addoption for a private repository
 
 create an ssh deploy key without passphrase

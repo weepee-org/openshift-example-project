@@ -2,24 +2,24 @@ apiVersion: v1
 kind: BuildConfig
 metadata:
   labels:
-    app: static
-  name: static
+    app: php
+  name: php
 spec:
   output:
     to:
       kind: ImageStreamTag
-      name: static:latest
+      name: php:latest
   resources: {}
   source:
     git:
       ref: master
       uri: https://github.com/weepee-org/openshift-example-project.git
-    contextDir: static/
+    contextDir: php/
     type: Git
   strategy:
     dockerStrategy:
       from:
         kind: ImageStreamTag
-        name: static-webserver:latest
+        name: apache-php:latest
         namespace: weepee-registry
     type: Docker
