@@ -13,8 +13,8 @@ create a new project
 
 ```sh
 > oc new-project example \
-    --description="Project - static, php, hhvm" \
-    --display-name="Static PHP hhvm"
+    --description="Project - static, php, mojo, hhvm" \
+    --display-name="Static PHP Mojo hhvm"
 ```
 
 build static webserver
