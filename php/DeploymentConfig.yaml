@@ -5,7 +5,7 @@ metadata:
     app: php
   name: php
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     app: php
     deploymentconfig: php
