@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hhvm
+  name: hhvm
+spec:
+  ports:
+  - name: 9000-tcp
+    port: 9000
+    protocol: TCP
+    targetPort: 9000
+  selector:
+    app: hhvm
+    deploymentconfig: hhvm
+  sessionAffinity: None
+  type: ClusterIP

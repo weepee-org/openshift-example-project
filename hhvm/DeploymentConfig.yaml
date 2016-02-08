@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: hhvm
+  name: hhvm
+spec:
+  replicas: 4
+  selector:
+    app: hhvm
+    deploymentconfig: hhvm
+  strategy:
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      labels:
+        app: hhvm
+        deploymentconfig: hhvm
+    spec:
+      containers:
+      - image: hhvm/hhvm:latest
+        imagePullPolicy: Always
+        name: hhvm
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - hhvm
+      from:
+        kind: ImageStreamTag
+        name: hhvm:latest
+    type: ImageChange

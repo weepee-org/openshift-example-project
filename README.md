@@ -50,6 +50,17 @@ build mojo webserver
 > oc start-build mojo
 ```
 
+build hhvm webserver
+
+```sh
+> oc create -f hhvm/BuildConfig.yaml
+> oc create -f hhvm/ImageStream.yaml
+> oc create -f hhvm/DeploymentConfig.yaml
+> oc create -f hhvm/Route.yaml
+> oc create -f hhvm/Services.yaml
+> oc start-build hhvm
+```
+
 #### Modifications for integrating in a private repository
 
 create an ssh deploy key without passphrase

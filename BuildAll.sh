@@ -23,3 +23,11 @@ oc create -f mojo/DeploymentConfig.yaml
 oc create -f mojo/Route.yaml
 oc create -f mojo/Services.yaml
 oc start-build mojo
+
+echo "hhvm"
+oc create -f hhvm/BuildConfig.yaml
+oc create -f hhvm/ImageStream.yaml
+oc create -f hhvm/DeploymentConfig.yaml
+oc create -f hhvm/Route.yaml
+oc create -f hhvm/Services.yaml
+oc start-build hhvm
