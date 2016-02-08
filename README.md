@@ -1,4 +1,4 @@
-# openshift-my-static-site
+# openshift-example-project
 
 Example project running:
 - static static webserver
