@@ -1,3 +1,3 @@
 FROM weepee-registry/proxy-server
 # Your App
-ADD conf /conf
+ADD conf/proxy.conf /conf/proxy.conf
