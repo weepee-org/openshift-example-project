@@ -5,7 +5,7 @@ metadata:
     app: hhvm
   name: hhvm
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     app: hhvm
     deploymentconfig: hhvm
