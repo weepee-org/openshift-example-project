@@ -13,8 +13,8 @@ create a new project
 
 ```sh
 > oc new-project example \
-    --description="Project - static, php, mojo, hhvm" \
-    --display-name="Static PHP Mojo hhvm"
+    --description="Examples - static, php, mojo, hhvm, proxy" \
+    --display-name="Examples"
 ```
 
 build static webserver
@@ -23,7 +23,6 @@ build static webserver
 > oc create -f static/BuildConfig.yaml
 > oc create -f static/ImageStream.yaml
 > oc create -f static/DeploymentConfig.yaml
-> oc create -f static/Route.yaml
 > oc create -f static/Services.yaml
 > oc start-build static
 ```
@@ -34,7 +33,6 @@ build php webserver
 > oc create -f php/BuildConfig.yaml
 > oc create -f php/ImageStream.yaml
 > oc create -f php/DeploymentConfig.yaml
-> oc create -f php/Route.yaml
 > oc create -f php/Services.yaml
 > oc start-build php
 ```
@@ -45,7 +43,6 @@ build mojo webserver
 > oc create -f mojo/BuildConfig.yaml
 > oc create -f mojo/ImageStream.yaml
 > oc create -f mojo/DeploymentConfig.yaml
-> oc create -f mojo/Route.yaml
 > oc create -f mojo/Services.yaml
 > oc start-build mojo
 ```
@@ -56,9 +53,19 @@ build hhvm webserver
 > oc create -f hhvm/BuildConfig.yaml
 > oc create -f hhvm/ImageStream.yaml
 > oc create -f hhvm/DeploymentConfig.yaml
-> oc create -f hhvm/Route.yaml
 > oc create -f hhvm/Services.yaml
 > oc start-build hhvm
+```
+
+build proxy server for glueing all above together
+
+```sh
+> oc create -f proxy/BuildConfig.yaml
+> oc create -f proxy/ImageStream.yaml
+> oc create -f proxy/DeploymentConfig.yaml
+> oc create -f proxy/Services.yaml
+> oc create -f proxy/Route.yaml
+> oc start-build proxy
 ```
 
 #### Modifications for integrating in a private repository
