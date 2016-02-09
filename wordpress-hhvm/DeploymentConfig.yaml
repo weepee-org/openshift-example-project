@@ -24,6 +24,11 @@ spec:
         app: wordpress
         deploymentconfig: wordpress
     spec:
+      volumes:
+        -
+          name: wordpress-data
+          persistentVolumeClaim:
+            claimName: wordpress-data
       containers:
       - image: wordpress/wordpress:latest
         imagePullPolicy: Always
@@ -32,6 +37,10 @@ spec:
         - containerPort: 8080
           protocol: TCP
         resources: {}
+        volumeMounts:
+            -
+              name: wordpress-data
+              mountPath: /app
         terminationMessagePath: /dev/termination-log
       dnsPolicy: ClusterFirst
       restartPolicy: Always
