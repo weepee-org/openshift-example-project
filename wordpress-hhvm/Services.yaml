@@ -6,10 +6,10 @@ metadata:
   name: wordpress
 spec:
   ports:
-  - name: 8080-tcp
-    port: 8080
+  - name: 9000-tcp
+    port: 9000
     protocol: TCP
-    targetPort: 8080
+    targetPort: 9000
   selector:
     app: wordpress
     deploymentconfig: wordpress
