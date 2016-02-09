@@ -42,7 +42,7 @@ spec:
   - imageChangeParams:
       automatic: true
       containerNames:
-      - php
+      - wordpress
       from:
         kind: ImageStreamTag
         name: wordpress:latest
