@@ -18,8 +18,16 @@ oc create -f php/DeploymentConfig.yaml
 oc create -f php/Services.yaml
 oc start-build php
 
+echo "php-phalcon"
+oc create -f php-phalcon/BuildConfig.yaml
+oc create -f php-phalcon/ImageStream.yaml
+oc create -f php-phalcon/DeploymentConfig.yaml
+oc create -f php-phalcon/Services.yaml
+oc start-build php-phalcon
+
 echo "mojo"
-oc create -f mojo/BuildConfig.yaml
+oc create -f mojo/BuildConfig.yaml- apache (threading) proxy (openshift-webproxy)
+
 oc create -f mojo/ImageStream.yaml
 oc create -f mojo/DeploymentConfig.yaml
 oc create -f mojo/Services.yaml
