@@ -39,3 +39,17 @@ oc create -f proxy/DeploymentConfig.yaml
 oc create -f proxy/Services.yaml
 oc create -f proxy/Route.yaml
 oc start-build proxy
+
+echo "wordpress"
+oc create -f Gluster-Service.yaml
+oc create -f Gluster-Endpoints.yaml
+oc create -f wordpress-php/PersistentVolumeClaim.yaml
+oc create -f wordpress-php/BuildConfig.yaml
+oc create -f wordpress-php/ImageStream.yaml
+oc create -f wordpress-php/DeploymentConfig.yaml
+oc create -f wordpress-php/Services.yaml
+oc create -f wordpress-php/Route.yaml
+PASSWORD=$(openssl rand 12 -base64)
+echo "DB wordpress USER wordpress PASSWORD ${PASSWORD}"
+oc process -f wordpress-php/MysqlTemplate.yaml -v MYSQL_DATABASE=wordpress,VOLUME_CAPACITY=512Mi,MYSQL_USER=wordpress,MYSQL_PASSWORD=${PASSWORD} | oc create -f -
+oc start-build wordpress
