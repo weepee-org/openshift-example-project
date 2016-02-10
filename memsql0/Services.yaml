@@ -3,9 +3,13 @@ kind: Service
 metadata:
   labels:
     app: memsql0
-  name: memsql0-admin
+  name: memsql0
 spec:
   ports:
+  - name: 3306-tcp
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
   - name: 9000-tcp
     port: 9000
     protocol: TCP
