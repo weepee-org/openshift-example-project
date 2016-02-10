@@ -83,3 +83,23 @@ echo "wordpress hhvm"
 # echo "DB wordpress USER wordpress PASSWORD ${PASSWORD}"
 # oc process -f wordpress-php/MysqlTemplate.yaml -v MYSQL_DATABASE=wordpress,VOLUME_CAPACITY=512Mi,MYSQL_USER=wordpress,MYSQL_PASSWORD=${PASSWORD} | oc create -f -
 # oc start-build wordpress
+
+echo "memsql0"
+#oc create -f Gluster-Service.yaml
+#oc create -f Gluster-Endpoints.yaml
+oc create -f memsql0/PersistentVolumeClaim.yaml
+oc create -f memsql0/BuildConfig.yaml
+oc create -f memsql0/ImageStream.yaml
+oc create -f memsql0/DeploymentConfig.yaml
+oc create -f memsql0/Services.yaml
+oc create -f memsql0/Route.yaml
+
+echo "memsql1"
+#oc create -f Gluster-Service.yaml
+#oc create -f Gluster-Endpoints.yaml
+oc create -f memsql1/PersistentVolumeClaim.yaml
+oc create -f memsql1/BuildConfig.yaml
+oc create -f memsql1/ImageStream.yaml
+oc create -f memsql1/DeploymentConfig.yaml
+oc create -f memsql1/Services.yaml
+oc create -f memsql1/Route.yaml
