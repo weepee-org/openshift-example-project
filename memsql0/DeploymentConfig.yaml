@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: memsql0
+  name: memsql0
+spec:
+  replicas: 1
+  selector:
+    app: memsql0
+    deploymentconfig: memsql0
+  strategy:
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      labels:
+        app: memsql0
+        deploymentconfig: memsql0
+    spec:
+      volumes:
+        -
+          name: memsql0-data
+          persistentVolumeClaim:
+            claimName: memsql0-data
+      containers:
+      - image: memsql0/memsql0:latest
+        imagePullPolicy: Always
+        name: memsql0
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+            -
+              name: memsql0-data
+              mountPath: /app
+        terminationMessagePath: /dev/termination-log
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - memsql0
+      from:
+        kind: ImageStreamTag
+        name: memsql0:latest
+    type: ImageChange
