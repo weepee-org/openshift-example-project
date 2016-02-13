@@ -107,3 +107,10 @@ oc create -f memsql-leaf0/BuildConfig.yaml
 oc create -f memsql-leaf0/ImageStream.yaml
 oc create -f memsql-leaf0/DeploymentConfig.yaml
 oc create -f memsql-leaf0/Services.yaml
+
+echo "memsql Leaf1"
+oc create -f memsql-leaf1/PersistentVolumeClaim.yaml
+oc create -f memsql-leaf1/BuildConfig.yaml
+oc create -f memsql-leaf1/ImageStream.yaml
+oc create -f memsql-leaf1/DeploymentConfig.yaml
+oc create -f memsql-leaf1/Services.yaml
