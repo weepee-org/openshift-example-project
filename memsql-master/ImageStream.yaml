@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ImageStream
+metadata:
+  labels:
+    app: memsql-master
+  name: memsql-master
+spec: {}

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: memsql-master
+  name: memsql-master
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: memsql-master:latest
+  resources: {}
+  source:
+    git:
+      ref: master
+      uri: https://github.com/weepee-org/openshift-example-project.git
+    contextDir: memsql-master-php/
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: memsql-master-server:latest
+        namespace: weepee-registry
+    type: Docker

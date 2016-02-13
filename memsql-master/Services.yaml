@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: memsql-master
+  name: memsql-master
+spec:
+  ports:
+  - name: 9000-tcp
+    port: 9000
+    protocol: TCP
+    targetPort: 9000
+  - name: 9022-tcp
+    port: 9022
+    protocol: TCP
+    targetPort: 9022
+  - name: 3306-tcp
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  - name: 3307-tcp
+    port: 3307
+    protocol: TCP
+    targetPort: 3307
+  selector:
+    app: memsql-master
+    deploymentconfig: memsql-master
+  sessionAffinity: None
+  type: ClusterIP
