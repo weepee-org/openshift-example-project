@@ -20,6 +20,6 @@ spec:
     dockerStrategy:
       from:
         kind: ImageStreamTag
-        name: memsql-master-server:latest
+        name: memsql-server:latest
         namespace: weepee-registry
     type: Docker

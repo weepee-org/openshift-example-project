@@ -95,8 +95,6 @@ oc create -f memsql-master/Services.yaml
 oc create -f memsql-master/Route.yaml
 
 echo "memsql Child0"
-#oc create -f Gluster-Service.yaml
-#oc create -f Gluster-Endpoints.yaml
 oc create -f memsql-child0/PersistentVolumeClaim.yaml
 oc create -f memsql-child0/BuildConfig.yaml
 oc create -f memsql-child0/ImageStream.yaml
