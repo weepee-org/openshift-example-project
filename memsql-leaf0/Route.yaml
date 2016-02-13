@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: memsql-leaf0
+  labels:
+    app: memsql-leaf0
+spec:
+  to:
+    kind: Service
+    name: memsql-leaf0
+  port:
+    targetPort: 9000
+status: {  }

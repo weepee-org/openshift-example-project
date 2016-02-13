@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: memsql-leaf0
+  name: memsql-leaf0
+spec:
+  replicas: 1
+  selector:
+    app: memsql-leaf0
+    deploymentconfig: memsql-leaf0
+  strategy:
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      labels:
+        app: memsql-leaf0
+        deploymentconfig: memsql-leaf0
+    spec:
+      volumes:
+        -
+          name: memsql-leaf0-data
+          persistentVolumeClaim:
+            claimName: memsql-leaf0-data
+      containers:
+      - image: memsql-leaf0/memsql-leaf0:latest
+        imagePullPolicy: Always
+        name: memsql-leaf0
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+            -
+              name: memsql-leaf0-data
+              mountPath: /data
+        terminationMessagePath: /dev/termination-log
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - memsql-leaf0
+      from:
+        kind: ImageStreamTag
+        name: memsql-leaf0:latest
+    type: ImageChange

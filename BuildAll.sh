@@ -84,22 +84,32 @@ echo "wordpress hhvm"
 # oc process -f wordpress-php/MysqlTemplate.yaml -v MYSQL_DATABASE=wordpress,VOLUME_CAPACITY=512Mi,MYSQL_USER=wordpress,MYSQL_PASSWORD=${PASSWORD} | oc create -f -
 # oc start-build wordpress
 
-echo "memsql0"
+echo "memsql Master"
 #oc create -f Gluster-Service.yaml
 #oc create -f Gluster-Endpoints.yaml
-oc create -f memsql0/PersistentVolumeClaim.yaml
-oc create -f memsql0/BuildConfig.yaml
-oc create -f memsql0/ImageStream.yaml
-oc create -f memsql0/DeploymentConfig.yaml
-oc create -f memsql0/Services.yaml
-oc create -f memsql0/Route.yaml
+oc create -f memsql-master/PersistentVolumeClaim.yaml
+oc create -f memsql-master/BuildConfig.yaml
+oc create -f memsql-master/ImageStream.yaml
+oc create -f memsql-master/DeploymentConfig.yaml
+oc create -f memsql-master/Services.yaml
+oc create -f memsql-master/Route.yaml
 
-echo "memsql1"
+echo "memsql Child0"
 #oc create -f Gluster-Service.yaml
 #oc create -f Gluster-Endpoints.yaml
-oc create -f memsql1/PersistentVolumeClaim.yaml
-oc create -f memsql1/BuildConfig.yaml
-oc create -f memsql1/ImageStream.yaml
-oc create -f memsql1/DeploymentConfig.yaml
-oc create -f memsql1/Services.yaml
-oc create -f memsql1/Route.yaml
+oc create -f memsql-child0/PersistentVolumeClaim.yaml
+oc create -f memsql-child0/BuildConfig.yaml
+oc create -f memsql-child0/ImageStream.yaml
+oc create -f memsql-child0/DeploymentConfig.yaml
+oc create -f memsql-child0/Services.yaml
+oc create -f memsql-child0/Route.yaml
+
+echo "memsql Leaf0"
+#oc create -f Gluster-Service.yaml
+#oc create -f Gluster-Endpoints.yaml
+oc create -f memsql-leaf0/PersistentVolumeClaim.yaml
+oc create -f memsql-leaf0/BuildConfig.yaml
+oc create -f memsql-leaf0/ImageStream.yaml
+oc create -f memsql-leaf0/DeploymentConfig.yaml
+oc create -f memsql-leaf0/Services.yaml
+oc create -f memsql-leaf0/Route.yaml
