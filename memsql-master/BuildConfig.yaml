@@ -14,7 +14,7 @@ spec:
     git:
       ref: master
       uri: https://github.com/weepee-org/openshift-example-project.git
-    contextDir: memsql-master-php/
+    contextDir: memsql-master/
     type: Git
   strategy:
     dockerStrategy:

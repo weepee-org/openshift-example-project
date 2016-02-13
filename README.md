@@ -12,9 +12,9 @@ You need [oc](https://github.com/openshift/origin/releases) locally installed:
 create a new project
 
 ```sh
-> oc new-project example \
-    --description="Examples - static, php, mojo, hhvm, proxy" \
-    --display-name="Examples"
+oc new-project example \
+    --description="Examples weepee registry" \
+    --display-name="Examples Weepee Registry"
 ```
 
 Look in [BuildAll.sh](https://github.com/weepee-org/openshift-example-project/blob/master/BuildAll.sh) for all Build Examples

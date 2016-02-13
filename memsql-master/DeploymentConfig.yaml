@@ -40,7 +40,7 @@ spec:
         volumeMounts:
             -
               name: memsql-master-data
-              mountPath: /memsql
+              mountPath: /data
         terminationMessagePath: /dev/termination-log
       dnsPolicy: ClusterFirst
       restartPolicy: Always
