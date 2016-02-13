@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: admin
+spec:
+  to:
+    kind: Service
+    name: memsql1
+  port:
+    targetPort: 9000
