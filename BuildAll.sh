@@ -100,14 +100,10 @@ oc create -f memsql-child0/BuildConfig.yaml
 oc create -f memsql-child0/ImageStream.yaml
 oc create -f memsql-child0/DeploymentConfig.yaml
 oc create -f memsql-child0/Services.yaml
-oc create -f memsql-child0/Route.yaml
 
 echo "memsql Leaf0"
-#oc create -f Gluster-Service.yaml
-#oc create -f Gluster-Endpoints.yaml
 oc create -f memsql-leaf0/PersistentVolumeClaim.yaml
 oc create -f memsql-leaf0/BuildConfig.yaml
 oc create -f memsql-leaf0/ImageStream.yaml
 oc create -f memsql-leaf0/DeploymentConfig.yaml
 oc create -f memsql-leaf0/Services.yaml
-oc create -f memsql-leaf0/Route.yaml

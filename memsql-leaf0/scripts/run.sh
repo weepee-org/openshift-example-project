@@ -1,8 +1,8 @@
 #!/bin/sh
 
 STAMP=$(date)
-
-echo "memsql:saG0wPb9ztPZs:`id -u`:0:MemSQL Service Account:/memsql:/bin/sh" >> /etc/passwd
+sed '/^memsql/d' /etc/passwd > /tmp/_passwd && cat /tmp/_passwd > /etc/passwd && rm /tmp/_passwd
+echo "memsql:saG0wPb9ztPZs:`id -u`:0:MemSQL Service Account:/var/lib/memsql-ops:/bin/sh" >> /etc/passwd
 
 # generate host keys
 if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
