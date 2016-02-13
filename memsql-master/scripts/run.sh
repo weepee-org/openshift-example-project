@@ -25,6 +25,7 @@ echo "[${STAMP}] Starting sshd on port 9022 ..."
 /usr/sbin/sshd -p 9022
 
 echo "[${STAMP}] Starting daemon..."
+rm /data/data/memsql-ops.pid
 sed -i '/user = memsql/d' /data/settings.conf
 cd /var/lib/memsql-ops/
 ./memsql-ops start --settings-file /data/settings.conf  --ignore-root-error -f 2>&1
