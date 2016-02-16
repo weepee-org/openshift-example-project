@@ -114,3 +114,11 @@ oc create -f memsql-leaf1/BuildConfig.yaml
 oc create -f memsql-leaf1/ImageStream.yaml
 oc create -f memsql-leaf1/DeploymentConfig.yaml
 oc create -f memsql-leaf1/Services.yaml
+
+echo "phppgadmin"
+oc create -f phppgadmin/BuildConfig.yaml
+oc create -f phppgadmin/ImageStream.yaml
+oc create -f phppgadmin/DeploymentConfig.yaml
+oc create -f phppgadmin/Services.yaml
+oc create -f phppgadmin/Route.yaml
+oc start-build phppgadmin
