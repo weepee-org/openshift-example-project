@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: phppgadmin
+  name: phppgadmin
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: phppgadmin:latest
+  resources: {}
+  source:
+    git:
+      ref: master
+      uri: https://github.com/weepee-org/openshift-example-project.git
+    contextDir: phppgadmin/
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: phppgadmin-app:latest
+        namespace: weepee-registry
+    type: Docker
