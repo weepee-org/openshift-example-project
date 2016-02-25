@@ -34,7 +34,7 @@ spec:
         imagePullPolicy: Always
         name: wordpress
         ports:
-        - containerPort: 8080
+        - containerPort: 9000
           protocol: TCP
         resources: {}
         volumeMounts:
